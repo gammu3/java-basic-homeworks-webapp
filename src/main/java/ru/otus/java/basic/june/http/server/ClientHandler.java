@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream;
 
 public class ClientHandler implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class);
-    private static final int BUFFER_SIZE = 65536; // 64 KB
+    private static final int BUFFER_SIZE = 65536;
 
     private Socket socket;
     private Dispatcher dispatcher;

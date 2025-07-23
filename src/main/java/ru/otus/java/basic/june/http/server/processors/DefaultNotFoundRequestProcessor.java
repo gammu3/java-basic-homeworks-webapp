@@ -18,7 +18,6 @@ public class DefaultNotFoundRequestProcessor implements RequestProcessor {
         logger.warn("Page not found: {}", request.getUri());
 
         try {
-            // Попробуем отправить картинку 404
             byte[] imageData = Files.readAllBytes(Paths.get(NOT_FOUND_IMAGE_PATH));
             String response = "HTTP/1.1 404 Not Found\r\n" +
                     "Content-Type: image/png\r\n" +
@@ -28,7 +27,6 @@ public class DefaultNotFoundRequestProcessor implements RequestProcessor {
             output.write(imageData);
         } catch (IOException e) {
             logger.error("Could not load 404 image, falling back to HTML", e);
-            // Если картинки нет, вернем обычный HTML
             String htmlResponse = "<html><body>" +
                     "<h1>404 Not Found</h1>" +
                     "<p>The requested resource was not found on this server.</p>" +
